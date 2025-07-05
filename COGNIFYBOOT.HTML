@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Components with Effects</title>
+    <!-- Bulma CSS CDN (for the Card Component) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <!-- Bootstrap CSS CDN (for the Grid Layout) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /* Custom styles for the Inter font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Light gray background */
+            color: #333;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Adjust Bulma card for better spacing and shadow */
+        .card-custom {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Added box-shadow transition */
+        }
+
+        .card-custom:hover {
+            transform: translateY(-8px); /* Increased lift on hover */
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+        }
+
+        /* Add margin to sections for visual separation */
+        section {
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Ensure Bootstrap containers have padding */
+        .container-fluid {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        /* Effects for Bootstrap Grid Items */
+        .grid-item-effect {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+            border: 1px solid #e2e8f0; /* Default border */
+            background-color: transparent; /* Changed to transparent */
+        }
+
+        .grid-item-effect:hover {
+            transform: translateY(-5px); /* Slight lift */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* Increased shadow */
+            border-color: #6366f1; /* Change border color on hover (indigo-500 equivalent) */
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="title is-1 mb-6">Responsive Web Components with Effects</h1>
+
+    <!-- Responsive Card Component (Bulma) -->
+    <section class="container card-component-section">
+        <h2 class="title is-2">Responsive Card Component (Bulma)</h2>
+        <div class="columns is-centered">
+            <div class="column is-full-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen">
+                <div class="card card-custom">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/800x600/667eea/ffffff?text=Image+Load+Error';"
+                                 alt="Placeholder image for a responsive card">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <p class="title is-4">Beautiful Landscape</p>
+                                <p class="subtitle is-6">@naturelover</p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            This is a responsive card component built with Bulma. It features an image, a title, and some descriptive text.
+                            Bulma's `is-4by3` class ensures the image maintains its aspect ratio, and the column classes handle responsiveness.
+                            <br>
+                            <time datetime="2025-07-05">July 5, 2025</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Responsive Grid Layout (Bootstrap) -->
+    <section class="container-fluid grid-component-section">
+        <h2 class="title is-2">Responsive Grid Layout (Bootstrap)</h2>
+        <div class="row g-4">
+            <!-- Column 1 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="p-4 border rounded-lg shadow-sm bg-light text-center grid-item-effect">
+                    <h3 class="h5 mb-3">Grid Item One</h3>
+                    <p>This is the first item in our responsive Bootstrap grid. On small screens, it will take full width. On medium screens and up, it will share space.</p>
+                </div>
+            </div>
+            <!-- Column 2 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="p-4 border rounded-lg shadow-sm bg-light text-center grid-item-effect">
+                    <h3 class="h5 mb-3">Grid Item Two</h3>
+                    <p>Another item demonstrating Bootstrap's powerful grid system. Watch how these columns rearrange themselves as you resize your browser window.</p>
+                </div>
+            </div>
+            <!-- Column 3 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="p-4 border rounded-lg shadow-sm bg-light text-center grid-item-effect">
+                    <h3 class="h5 mb-3">Grid Item Three</h3>
+                    <p>The third item, completing our 3-column layout for larger screens. On smaller devices, all items will stack vertically for optimal readability.</p>
+                </div>
+            </div>
+            <!-- Column 4 (Optional, to show wrapping) -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="p-4 border rounded-lg shadow-sm bg-light text-center grid-item-effect">
+                    <h3 class="h5 mb-3">Grid Item Four</h3>
+                    <p>An extra item to illustrate how Bootstrap columns wrap to the next line when the available space is not enough, maintaining responsiveness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS (Optional, for components that need JS like carousels, modals) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
