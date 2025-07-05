@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webpage Components</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the Inter font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light blue-gray background */
+            color: #334155; /* Darker text color */
+            line-height: 1.6;
+            padding: 1.5rem; /* Overall page padding */
+        }
+
+        /* Styles for the custom modal/message box */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 0.75rem;
+            right: 1rem;
+            color: #aaa;
+            font-size: 1.75rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center">
+
+    <!-- Navigation Menu Section -->
+    <nav class="w-full bg-blue-700 p-4 rounded-lg shadow-md mb-8 max-w-4xl">
+        <ul class="flex flex-col sm:flex-row justify-center sm:space-x-8 space-y-2 sm:space-y-0">
+            <li>
+                <a href="#home" class="text-white hover:text-blue-200 text-lg font-medium transition duration-300 ease-in-out p-2 rounded-md hover:bg-blue-600">Home</a>
+            </li>
+            <li>
+                <a href="#about" class="text-white hover:text-blue-200 text-lg font-medium transition duration-300 ease-in-out p-2 rounded-md hover:bg-blue-600">About Us</a>
+            </li>
+            <li>
+                <a href="#contact" class="text-white hover:text-blue-200 text-lg font-medium transition duration-300 ease-in-out p-2 rounded-md hover:bg-blue-600">Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Section (Heading, Paragraph, Image) -->
+    <div id="home" class="bg-white p-8 rounded-xl shadow-lg w-full max-w-4xl mb-8 text-center">
+        <h1 class="text-5xl font-extrabold text-gray-900 mb-4 leading-tight">Welcome to Our Awesome Page!</h1>
+        <p class="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
+            This is a simple paragraph demonstrating how text can be structured on a webpage. We're showcasing various HTML elements styled beautifully with Tailwind CSS.
+            Enjoy exploring the basic building blocks of web design!
+        </p>
+        <img
+            src="https://placehold.co/600x400/a78bfa/ffffff?text=Placeholder+Image"
+            onerror="this.onerror=null; this.src='https://placehold.co/600x400/a78bfa/ffffff?text=Image+Load+Error';"
+            alt="A colorful placeholder image"
+            class="w-full h-auto max-w-xl mx-auto rounded-lg shadow-md border-4 border-purple-300"
+        />
+    </div>
+
+    <!-- Basic Form Section -->
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">Subscribe to Our Newsletter</h2>
+        <form class="flex flex-col gap-4">
+            <label for="email" class="sr-only">Email Address</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email address"
+                class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800"
+                required
+            />
+            <button
+                type="submit"
+                class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
+            >
+                Subscribe
+            </button>
+        </form>
+    </div>
+
+    <!-- Button Color Change Section -->
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md mb-8 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Interactive Button</h2>
+        <button
+            id="colorChangingButton"
+            class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
+        >
+            Click to Change Color
+        </button>
+    </div>
+
+    <!-- Time-based Greeting Section -->
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md mb-8 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Time-based Greeting</h2>
+        <button
+            id="greetingButton"
+            class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
+        >
+            Get Greeting
+        </button>
+    </div>
+
+    <!-- Basic Calculator Section -->
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">Simple Calculator</h2>
+        <div class="flex flex-col gap-4">
+            <input
+                type="number"
+                id="num1"
+                placeholder="Enter first number"
+                class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 text-gray-800"
+            />
+            <input
+                type="number"
+                id="num2"
+                placeholder="Enter second number"
+                class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 text-gray-800"
+            />
+            <button
+                id="addButton"
+                class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
+            >
+                Add Numbers
+            </button>
+            <p class="text-xl font-semibold text-gray-800 mt-4 text-center">Result: <span id="calculatorResult">0</span></p>
+        </div>
+    </div>
+
+    <!-- Custom Modal Structure -->
+    <div id="myModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button" id="closeModalButton">&times;</span>
+            <p id="modalMessage" class="text-xl font-semibold text-gray-800"></p>
+        </div>
+    </div>
+
+    <!-- Footer for context -->
+    <footer class="mt-auto text-center text-gray-600 text-sm py-4">
+        <p>&copy; 2025 Webpage Components Demo. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Button Color Change
+            const colorChangingButton = document.getElementById('colorChangingButton');
+            const colors = ['bg-purple-500', 'bg-blue-500', 'bg-green-500', 'bg-red-500', 'bg-yellow-500'];
+            let currentColorIndex = 0;
+
+            colorChangingButton.addEventListener('click', () => {
+                // Remove current color class
+                colorChangingButton.classList.remove(colors[currentColorIndex]);
+
+                // Move to the next color, loop back if at the end
+                currentColorIndex = (currentColorIndex + 1) % colors.length;
+
+                // Add new color class
+                colorChangingButton.classList.add(colors[currentColorIndex]);
+            });
+
+            // 2. Time-based Greeting (Custom Modal)
+            const greetingButton = document.getElementById('greetingButton');
+            const myModal = document.getElementById('myModal');
+            const closeModalButton = document.getElementById('closeModalButton');
+            const modalMessage = document.getElementById('modalMessage');
+
+            greetingButton.addEventListener('click', () => {
+                const now = new Date();
+                const hour = now.getHours();
+                let greeting;
+
+                if (hour < 12) {
+                    greeting = "Good morning!";
+                } else if (hour < 18) {
+                    greeting = "Good afternoon!";
+                } else {
+                    greeting = "Good evening!";
+                }
+                modalMessage.textContent = greeting;
+                myModal.style.display = 'flex'; // Show the modal
+            });
+
+            closeModalButton.addEventListener('click', () => {
+                myModal.style.display = 'none'; // Hide the modal
+            });
+
+            // Close modal if clicked outside content
+            window.addEventListener('click', (event) => {
+                if (event.target == myModal) {
+                    myModal.style.display = 'none';
+                }
+            });
+
+            // 3. Basic Calculator
+            const num1Input = document.getElementById('num1');
+            const num2Input = document.getElementById('num2');
+            const addButton = document.getElementById('addButton');
+            const calculatorResult = document.getElementById('calculatorResult');
+
+            addButton.addEventListener('click', () => {
+                const number1 = parseFloat(num1Input.value);
+                const number2 = parseFloat(num2Input.value);
+
+                // Check if inputs are valid numbers
+                if (!isNaN(number1) && !isNaN(number2)) {
+                    const sum = number1 + number2;
+                    calculatorResult.textContent = sum;
+                } else {
+                    calculatorResult.textContent = "Invalid input";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
