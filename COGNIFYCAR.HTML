@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Responsive Car Site</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset & Box Sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background-color: #EEEEEE; /* Light gray/off-white background for the body */
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #1A1A1A; /* Dark Charcoal/Black */
+            color: #FFFFFF; /* White */
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            border-bottom-left-radius: 15px; /* Rounded corners */
+            border-bottom-right-radius: 15px; /* Rounded corners */
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .logo:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Navigation Styling (Desktop) */
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background-color: #FFFFFF; /* White background on hover/active */
+            color: #1A1A1A; /* Dark Charcoal/Black text on hover/active */
+        }
+
+        /* Hamburger Menu Icon */
+        .hamburger-menu {
+            display: none; /* Hidden by default on desktop */
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #FFFFFF;
+            padding: 5px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .hamburger-menu:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Main Content Styling */
+        main {
+            padding: 40px 0;
+        }
+
+        .hero-section {
+            background-color: #FFFFFF; /* White background */
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            color: #1A1A1A; /* Dark Charcoal/Black */
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #1A1A1A; /* Dark Charcoal/Black */
+            color: #FFFFFF;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color:#000000; /* Pure Black */
+            transform: translateY(-2px);
+        }
+
+        .content-section,
+        .image-gallery-section,
+        .slideshow-section {
+            background-color: #FFFFFF;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .content-section h2,
+        .image-gallery-section h2,
+        .slideshow-section h2 {
+            text-align: center;
+            color: #1A1A1A;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .content-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: #FFFFFF; /* White background */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            color:#1A1A1A; /* Dark Charcoal/Black */
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Image Gallery Styling */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px 0;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 150px; /* Fixed height for thumbnails */
+            object-fit: cover; /* Cover the area, cropping if necessary */
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 2px solid #EEEEEE; /* Light border */
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Image Modal (Lightbox) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            padding-top: 60px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        /* Add Animation */
+        @keyframes zoom {
+            from {transform:scale(0)}
+            to {transform:scale(1)}
+        }
+
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px; /* Adjust height to prevent layout shift */
+        }
+
+        /* Slideshow Styling */
+        .slideshow-container {
+            max-width: 800px;
+            position: relative;
+            margin: auto;
+            border-radius: 15px;
+            overflow: hidden; /* Ensures rounded corners apply to images */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mySlides {
+            display: none;
+            text-align: center; /* Center image horizontally */
+        }
+
+        .mySlides img {
+            width: 100%;
+            height: auto;
+            display: block; /* Remove extra space below image */
+            border-radius: 15px; /* Apply rounded corners to images within slideshow */
+        }
+
+        .text {
+            color: #f2f2f2;
+            font-size: 1.2rem;
+            padding: 15px 12px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background for text */
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background with a little more opacity */
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active-dot, .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #1A1A1A; /* Dark Charcoal/Black */
+            color: #FFFFFF;
+            text-align: center;
+            padding: 1.5rem 0;
+            border-top-left-radius: 15px; /* Rounded corners */
+            border-top-right-radius: 15px; /* Rounded corners */
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            header .container {
+                flex-wrap: wrap; /* Allow items to wrap */
+            }
+
+            nav {
+                width: 100%; /* Full width for navigation */
+                order: 3; /* Move nav below logo and hamburger */
+            }
+
+            nav ul {
+                display: none; /* Hide desktop menu */
+                flex-direction: column; /* Stack links vertically */
+                width: 100%;
+                background-color: #1A1A1A; /* Dark Charcoal/Black for mobile menu */
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+                padding: 10px 0;
+                margin-top: 10px;
+                border-radius: 10px;
+            }
+
+            nav ul.active {
+                display: flex; /* Show mobile menu when active */
+            }
+
+            nav ul li {
+                margin: 0; /* Remove horizontal margin */
+                text-align: center;
+            }
+
+            nav ul li a {
+                display: block; /* Make links full width */
+                padding: 12px 20px;
+                border-radius: 0; /* Remove individual link rounding */
+            }
+
+            nav ul li a:hover,
+            nav ul li a.active {
+                background-color: rgba(255, 255, 255, 0.1); /* Lighter hover for mobile */
+                color: #FFFFFF; /* Keep text white on hover */
+            }
+
+            .hamburger-menu {
+                display: block; /* Show hamburger icon */
+            }
+
+            .hero-section {
+                padding: 40px 20px;
+            }
+
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-section p {
+                font-size: 1rem;
+            }
+
+            .content-section,
+            .image-gallery-section,
+            .slideshow-section {
+                padding: 20px;
+            }
+
+            .content-section {
+                grid-template-columns: 1fr; /* Single column layout */
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .modal-content {
+                width: 95%;
+            }
+
+            .prev, .next {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero-section h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-section p {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr; /* Single column for very small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#" class="logo">Navcom</a>
+            <nav>
+                <ul id="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger-menu" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero-section">
+                <h1>Welcome to the World of Automotive Excellence</h1>
+                <p>
+                    Explore our curated collection of the most iconic and luxurious vehicles, designed to ignite your passion for speed and elegance.
+                </p>
+                <a href="#" class="btn">Discover More</a>
+            </section>
+
+            <section class="content-section">
+                <div class="card">
+                    <h3>Exquisite Design</h3>
+                    <p>Witness the pinnacle of automotive artistry, where every curve and line is crafted for perfection.</p>
+                </div>
+                <div class="card">
+                    <h3>Unrivaled Performance</h3>
+                    <p>Experience the thrill of cutting-edge engineering and raw power on the road or track.</p>
+                </div>
+                <div class="card">
+                    <h3>Luxury Redefined</h3>
+                    <p>Indulge in interiors that blend opulent materials with ergonomic precision for ultimate comfort.</p>
+                </div>
+            </section>
+
+            <section class="image-gallery-section">
+                <h2>Our Exclusive Car Gallery</h2>
+                <div class="gallery-grid" id="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dbb8kptkg/image/upload/v1751959455/ferrari_oty8km.jpg" width="600x400" alt="Ferrari Sports Car">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dbb8kptkg/image/upload/v1751959456/27193374-black-lamborghini-wallpaper_kjshus.jpg" width="600x400" alt="Lamborghini Supercar">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dbb8kptkg/image/upload/v1751959455/28833778-download-black-porsche-911-4k-laptop_wfvh2p.jpg" width="600x400"alt="Porsche Luxury Vehicle">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dbb8kptkg/image/upload/v1751959455/1254598_marnxp.jpg" width="600x400" alt="McLaren Hypercar">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dbb8kptkg/image/upload/v1751959455/1749560_a53aag.jpg" width="600x400" alt="Bugatti Grand Tourer">
+                    </div>
+                   
+                </div>
+
+                <!-- The Image Modal (Lightbox) -->
+                <div id="imageModal" class="modal">
+                    <span class="close-button">&times;</span>
+                    <img class="modal-content" id="modalImage">
+                    <div id="caption" class="caption"></div>
+                </div>
+            </section>
+
+            <section class="slideshow-section">
+                <h2>Featured Cars Slideshow</h2>
+                <div class="slideshow-container">
+                    <div class="mySlides fade">
+                        <img src="https://res.cloudinary.com/dbb8kptkg/image/upload/v1751960290/392531_rmgqju.jpg" alt="Ferrari 488">
+                        <div class="text">Ferrari 488 - Italian Elegance</div>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="https://res.cloudinary.com/dbb8kptkg/image/upload/v1751960470/389258_sebnlg.jpg" alt="Lamborghini Aventador">
+                        <div class="text">Lamborghini Aventador - Unmistakable Power</div>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="https://res.cloudinary.com/dbb8kptkg/image/upload/v1751960561/2847872_ocstnb.jpg" alt="MCLorem 911">
+                        <div class="text">Porsche 911 - Timeless Performance</div>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="https://res.cloudinary.com/dbb8kptkg/image/upload/v1751960718/9724544_qbv0ab.jpg" alt="Mercedes-AMG GT">
+                        <div class="text">Mercedes-AMG GT - German Precision</div>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="https://res.cloudinary.com/dbb8kptkg/image/upload/v1751960812/1991061_q46uyz.jpg" alt="Audi R8">
+                        <div class="text">Audi R8 - Everyday Supercar</div>
+                    </div>
+
+                    <!-- Next and previous buttons -->
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
+
+                <!-- The dots/circles -->
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Navcom. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+
+            // Toggle navigation menu on hamburger click
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            // Close navigation menu when a link is clicked (for mobile)
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+
+            // Optional: Close menu if window is resized above mobile breakpoint
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+
+            /* Image Gallery Logic */
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            const captionText = document.getElementById("caption");
+            const galleryItems = document.querySelectorAll(".gallery-item img");
+            const closeBtn = document.querySelector(".close-button");
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                    captionText.innerHTML = this.alt;
+                });
+            });
+
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = "none";
+            });
+
+            // Close modal when clicking outside the image
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+
+            /* Image Slideshow Logic */
+            let slideIndex = 1;
+            let slideshowInterval; // Variable to hold the interval ID
+
+            function showSlides(n) {
+                let i;
+                let slides = document.getElementsByClassName("mySlides");
+                let dots = document.getElementsByClassName("dot");
+                if (n > slides.length) { slideIndex = 1 }
+                if (n < 1) { slideIndex = slides.length }
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active-dot", "");
+                }
+                slides[slideIndex-1].style.display = "block";
+                dots[slideIndex-1].className += " active-dot";
+            }
+
+            // Next/previous controls
+            window.plusSlides = function(n) {
+                clearTimeout(slideshowInterval); // Clear existing timeout
+                showSlides(slideIndex += n);
+                startSlideshow(); // Restart slideshow after manual navigation
+            }
+
+            // Thumbnail image controls
+            window.currentSlide = function(n) {
+                clearTimeout(slideshowInterval); // Clear existing timeout
+                showSlides(slideIndex = n);
+                startSlideshow(); // Restart slideshow after manual navigation
+            }
+
+            function startSlideshow() {
+                // Clear any existing interval to prevent multiple intervals running
+                if (slideshowInterval) {
+                    clearTimeout(slideshowInterval);
+                }
+                // Set a new interval for automatic slide change
+                slideshowInterval = setTimeout(function() {
+                    showSlides(slideIndex += 1);
+                    startSlideshow(); // Call itself to loop
+                }, 3000); // Change image every 3 seconds
+            }
+
+            // Initial call to display the first slide and start the slideshow
+            showSlides(slideIndex);
+            startSlideshow();
+        });
+    </script>
+</body>
+</html>
